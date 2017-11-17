@@ -1,0 +1,1 @@
+echo -n '{"deviceId":"bulb01","apiKey":"1234","Luminosity":"20","ActivePower":"0.42"}' | coap post coap://localhost/iot/coap

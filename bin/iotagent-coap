@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+var iotAgent = require('../lib/iotagent-coap'),
+    info = require('../package.json'),
+    context = {
+        op: 'IOTACoAP.Executable'
+    },
+    logger = require('logops');
+
+function start() {
+    var config;
+
+    if (process.argv.length === 3) {
+        config = require('../' + process.argv[2]);
+    } else {
+        config = require('../config');
+    }
+
+    config.iota.iotaVersion = info.version;
+
+    iotAgent.start(config, function (error) {
+        if (error) {
+            logger.error(context, 'Error starting CoAP IoT Agent: [%s] Exiting process', error);
+        } else {
+            logger.info(context, 'CoAP IoT Agent started');
+        }
+    });
+}
+
+start();

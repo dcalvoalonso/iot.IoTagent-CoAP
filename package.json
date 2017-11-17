@@ -1,0 +1,20 @@
+{
+  "name": "iotagent-coap-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/iotagent-coap",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "coap": "^0.21.0",
+    "iotagent-node-lib": "git+https://github.com/Fiware/iot.IoTagent-node-lib.git",
+    "logops": "^2.1.0"
+  },
+  "devDependencies": {
+    "coap-cli": "^0.5.1"
+  }
+}

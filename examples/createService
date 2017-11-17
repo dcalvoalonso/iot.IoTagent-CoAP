@@ -1,0 +1,11 @@
+curl -X POST -H "Fiware-Service: myHome" -H "Fiware-ServicePath: /environment" -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{ 
+    "services": [ 
+      {
+          "resource": "",
+          "apikey": "1234",
+          "type": "multiSensor"
+      }
+    ]
+}
+
+' 'http://localhost:4041/iot/services'
