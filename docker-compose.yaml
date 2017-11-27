@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  mongodb:
+    image: mongo:latest
+    hostname: mongodb
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    command: --nojournal
+    stdin_open: true
+    tty: true
+
+  orion:
+    image: fiware/orion:1.9.0
+    hostname: orion
+    links:
+      - mongodb:mongodb
+    expose:
+        - "1026"
+    ports:
+      - "1026:1026"
+    depends_on:
+      - mongodb
+    command:  -dbhost mongodb -db orion -logLevel DEBUG
+    stdin_open: true
+    tty: true
+
+  iotagent-coap:
+    image: danielcalvo/iotagent-coap
+    depends_on:
+      - mongodb
+      - orion
+    expose:
+      - "4041"
+      - "5683"
+    ports:
+      - "4041:4041"
+      - "5683:5683/udp"
+    links:
+      - mongodb:mongodb
+      - orion:orion
+    stdin_open: true
+    tty: true

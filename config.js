@@ -4,7 +4,7 @@ config.iota = {
     logLevel: 'DEBUG',
     timestamp: true,
     contextBroker: {
-        host: 'localhost',
+        host: 'orion',
         port: '1026',
         ngsiVersion: 'v2'
     },
@@ -15,7 +15,7 @@ config.iota = {
         type: 'mongodb'
     },
     mongodb: {
-        host: 'localhost',
+        host: 'mongodb',
         port: '27017',
         db: 'iotagentjson'
     },
