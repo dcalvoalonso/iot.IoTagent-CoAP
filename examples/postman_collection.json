@@ -1,0 +1,137 @@
+{
+	"variables": [],
+	"info": {
+		"name": "FIWARE. IoT Agent JSON-CoAP",
+		"_postman_id": "1cd9e717-daf8-71ed-aab8-80e29073c47d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.0 Get services",
+			"request": {
+				"url": "127.0.0.1:4041/iot/services",
+				"method": "GET",
+				"header": [
+					{
+						"key": "fiware-service",
+						"value": "myhome",
+						"description": ""
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/environment",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 Get devices",
+			"request": {
+				"url": "127.0.0.1:4041/iot/devices",
+				"method": "GET",
+				"header": [
+					{
+						"key": "fiware-service",
+						"value": "myhome",
+						"description": ""
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/environment",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "2.0 Create service",
+			"request": {
+				"url": "http://localhost:4041/iot/services",
+				"method": "POST",
+				"header": [
+					{
+						"key": "fiware-service",
+						"value": "myhome",
+						"description": ""
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/environment",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"services\": [ \n    \t{\n    \t\t\"resource\": \"\",\n    \t\t\"apikey\": \"1234\",\n    \t\t\"type\": \"multiSensor\"\n    \t\t\n    \t}\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Create device",
+			"request": {
+				"url": "http://localhost:4041/iot/devices",
+				"method": "POST",
+				"header": [
+					{
+						"key": "fiware-service",
+						"value": "myhome",
+						"description": ""
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/environment",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"devices\": [{\n\t\t\"device_id\": \"bulb01\",\n\t\t\"entity_name\": \"LivingRoomBulb\",\n\t\t\"entity_type\": \"multiSensor\",\n\t\t\"attributes\": [{\n\t\t\t\t\"object_id\": \"t\",\n\t\t\t\t\"name\": \"ActivePower\",\n\t\t\t\t\"type\": \"kwh\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"object_id\": \"l\",\n\t\t\t\t\"name\": \"Luminosity\",\n\t\t\t\t\"type\": \"lumens\"\n\t\t\t}\n\t\t]\n\t}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Get context",
+			"request": {
+				"url": "http://localhost:1026/v2/entities/LivingRoomBulb",
+				"method": "GET",
+				"header": [
+					{
+						"key": "fiware-service",
+						"value": "myhome",
+						"description": ""
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/environment",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
